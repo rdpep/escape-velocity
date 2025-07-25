@@ -34,13 +34,13 @@ fuels = {
 # Route: GET /api/materials
 @app.route('/api/materials', methods=['GET'])
 def get_materials():
-    return rocket_materials.keys()  # May need to modify if not returned in the sorted order to page
+    return jsonify(list(rocket_materials.keys()))  # May need to modify if not returned in the sorted order to page
 
 
 # Route: GET /api/fuels
 @app.route('/api/fuels', methods=['GET'])
 def get_fuels():
-    return fuels.keys()  # May need to modify if not returned in the sorted order to page
+    return jsonify(list(fuels.keys()))  # May need to modify if not returned in the sorted order to page
 
 
 # Route: POST /api/calculate
@@ -52,6 +52,12 @@ def calculate_delta_v():
     diameter = float(data.get('diameter', 0))
     fuel_type = data.get('fuel_type')
     fill_percentage = float(data.get('fuel_fill_percentage', 0))
+
+    if material not in rocket_materials or fuel_type not in fuels:
+        return jsonify({'error': 'Invalid material or fuel type'}), 400
+    if height <= 0 or diameter <= 0 or not (0 <= fill_percentage <= 1):
+        return jsonify({'error': 'Invalid height, diameter, or fill percentage'}), 400
+
     
     # Calculate empty rocket mass
     total_vol = math.pi * ((diameter/2)**2) * height
