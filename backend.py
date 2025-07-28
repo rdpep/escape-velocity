@@ -31,6 +31,10 @@ fuels = {
     'Refined Petroleum-1': [820, 2700]
 }   # List is density (kg/m^3), exhaust velocity (m/s)
 
+@app.route('/ping')
+def ping():
+    return {'message': 'pong'}
+
 # Route: GET /api/materials
 @app.route('/api/materials', methods=['GET'])
 def get_materials():
