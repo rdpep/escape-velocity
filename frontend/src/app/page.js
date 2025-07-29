@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 
 export default function HomePage() {
+  const base = 'https://escape-velocity-api.onrender.com';
   const [materials, setMaterials] = useState([]);
   const [fuels, setFuels] = useState([]);
   const [form, setForm] = useState({
@@ -16,7 +17,6 @@ export default function HomePage() {
 
   useEffect(() => {
     async function loadOptions() {
-      const base = 'https://escape-velocity-api.onrender.com';
       const matRes = await fetch(`${base}/materials`);
       const fuelRes = await fetch(`${base}/fuels`);
       setMaterials(await matRes.json());
