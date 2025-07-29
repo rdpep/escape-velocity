@@ -16,8 +16,8 @@ export default function HomePage() {
 
   useEffect(() => {
     async function loadOptions() {
-      const matRes = await fetch('http://localhost:5000/api/materials');
-      const fuelRes = await fetch('http://localhost:5000/api/fuels');
+      const matRes = await fetch('http://escape-velocity-api.onrender.com/materials');
+      const fuelRes = await fetch('http://escape-velocity-api.onrender.com/fuels');
       setMaterials(await matRes.json());
       setFuels(await fuelRes.json());
     }
@@ -34,7 +34,7 @@ export default function HomePage() {
     setResult(null); // Clear prior result
 
     try {
-      const res = await fetch('http://localhost:5000/api/calculate', {
+      const res = await fetch('http://escape-velocity-api.onrender.com/calculate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
