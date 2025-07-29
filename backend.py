@@ -35,20 +35,20 @@ fuels = {
 def ping():
     return {'message': 'pong'}
 
-# Route: GET /api/materials
-@app.route('/api/materials', methods=['GET'])
+# Route: GET /materials
+@app.route('/materials', methods=['GET'])
 def get_materials():
     return jsonify(list(rocket_materials.keys()))  # May need to modify if not returned in the sorted order to page
 
 
-# Route: GET /api/fuels
-@app.route('/api/fuels', methods=['GET'])
+# Route: GET /fuels
+@app.route('/fuels', methods=['GET'])
 def get_fuels():
     return jsonify(list(fuels.keys()))  # May need to modify if not returned in the sorted order to page
 
 
-# Route: POST /api/calculate
-@app.route('/api/calculate', methods=['POST'])
+# Route: POST /calculate
+@app.route('/calculate', methods=['POST'])
 def calculate_delta_v():
     data = request.json
     material = data.get('material')
