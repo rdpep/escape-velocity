@@ -55,7 +55,7 @@ def calculate_delta_v():
     height = float(data.get('height', 0))
     diameter = float(data.get('diameter', 0))
     fuel_type = data.get('fuel_type')
-    fill_percentage = float(data.get('fuel_fill_percentage', 0))
+    fill_percentage = float(data.get('fuel_fill_percentage', 0) * 0.01)
 
     if material not in rocket_materials or fuel_type not in fuels:
         return jsonify({'error': 'Invalid material or fuel type'}), 400
