@@ -52,10 +52,13 @@ def get_fuels():
 def calculate_delta_v():
     data = request.json
     material = data.get('material')
-    height = float(data.get('height', 0))
-    diameter = float(data.get('diameter', 0))
     fuel_type = data.get('fuel_type')
-    fill_percentage = float(data.get('fuel_fill_percentage', 0) * 0.01)
+    try:
+        height = float(data.get('height', 0))
+        diameter = float(data.get('diameter', 0))
+        fill_percentage = float(data.get('fuel_fill_percentage', 0)) * 0.01
+    except ValueError:
+        return jsonify({'error': 'Invalid number input'}), 400
 
     if material not in rocket_materials or fuel_type not in fuels:
         return jsonify({'error': 'Invalid material or fuel type'}), 400
