@@ -16,8 +16,9 @@ export default function HomePage() {
 
   useEffect(() => {
     async function loadOptions() {
-      const matRes = await fetch('http://escape-velocity-api.onrender.com/materials');
-      const fuelRes = await fetch('http://escape-velocity-api.onrender.com/fuels');
+      const base = 'https://escape-velocity-api.onrender.com';
+      const matRes = await fetch(`${base}/materials`);
+      const fuelRes = await fetch(`${base}/fuels`);
       setMaterials(await matRes.json());
       setFuels(await fuelRes.json());
     }
@@ -34,7 +35,7 @@ export default function HomePage() {
     setResult(null); // Clear prior result
 
     try {
-      const res = await fetch('http://escape-velocity-api.onrender.com/calculate', {
+      const res = await fetch(`${base}/calculate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
@@ -111,12 +112,12 @@ export default function HomePage() {
               className="p-2 rounded border"
             />
 
-            <label className="font-semibold">Fuel Fill Percentage (0 to 1)</label>
+            <label className="font-semibold">Fuel Fill Percentage (0 to 100)</label>
             <input
               type="number"
               step="0.01"
               min="0"
-              max="1"
+              max="100"
               name="fuel_fill_percentage"
               onChange={handleChange}
               required
