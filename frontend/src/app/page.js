@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function HomePage() {
   const base = 'https://escape-velocity-api.onrender.com';
@@ -62,13 +63,13 @@ export default function HomePage() {
           <p className="text-gray-300 mb-4">
             This tool estimates the delta-v of a rocket using basic parameters like height, diameter, material, fuel type,
             and fuel fill percentage. This is then used to calculate whether or not the rocket would achieve escape velocity 
-            and escape Earth's gravitational pull.
+            and escape Earth&apos;s gravitational pull.
           </p>
           <ul className="list-disc list-inside text-gray-400 space-y-2">
-            <li>Select a material for the rocket's shell.</li>
+            <li>Select a material for the rocket&apos;s shell.</li>
             <li>Choose a fuel type and how full the tank should be.</li>
-            <li>Input the rocket's height and diameter in meters.</li>
-            <li>Click "Calculate" to get an estimate of the rocket’s delta-v.</li>
+            <li>Input the rocket&apos;s height and diameter in meters.</li>
+            <li>Click &quot;Calculate&quot; to get an estimate of the rocket&apos;s delta-v.</li>
           </ul>
           <p className="text-sm text-gray-500 mt-auto pt-10">
             Note: This calculator is a simplified model and does not account for aerodynamic drag or real-world engine performance.
@@ -145,13 +146,13 @@ export default function HomePage() {
               <h2 className="text-lg font-semibold text-green-700">Delta-V: {result.delta_v.toFixed(2)} m/s</h2>
               {result.delta_v >= 11200 ? (
                 <div>
-                  <p className="text-green-300 mt-2">Your rocket can escape Earth's gravity!</p>
-                  <img src="/good_escape_velo.gif" alt="Launch success" className="w-40 mx-auto mt-4 filter grayscale" />
+                  <p className="text-green-300 mt-2">Your rocket can escape Earth&apos;s gravity!</p>
+                  <Image src="/good_escape_velo.gif" alt="Launch success" width={160} height={160} className="mx-auto mt-4 filter grayscale" />
                 </div>
               ) : (
                 <div>
-                  <p className="text-red-300 mt-2">Your rocket cannot escape Earth's gravity.</p>
-                  <img src="/bad_escape_velo.jpg" alt="Launch fail" className="w-40 mx-auto mt-4 filter grayscale" />
+                  <p className="text-red-300 mt-2">Your rocket cannot escape Earth&apos;s gravity.</p>
+                  <Image src="/bad_escape_velo.jpg" alt="Launch fail" width={160} height={160} className="mx-auto mt-4 filter grayscale" />
                 </div>
               )}
             </div>
