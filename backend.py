@@ -25,7 +25,7 @@ fuels = {
     'Hydrazine': [1010, 3500],
     'Hydrogen Peroxide': [1450, 1800],
     'Liquid Hydrogen': [70.9, 6553],
-    'Liquid Methane': [26429, 3450],
+    'Liquid Methane': [422.6, 3450],
     'Liquid Oxygen': [1141, 3000],
     'Nitrous Oxide': [1220, 2300],
     'Refined Petroleum-1': [820, 2700]
