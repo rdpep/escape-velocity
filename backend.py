@@ -68,13 +68,12 @@ def calculate_delta_v():
     
     # Calculate empty rocket mass
     total_vol = math.pi * ((diameter/2)**2) * height
-    tank_vol = math.pi * (((diameter * .85)/2)**2) * height
-    rocket_vol = total_vol - tank_vol
+    cabin_vol = math.pi * (((diameter * .5)/2)**2) * (height * .5)  # Empty space within rocket
+    rocket_vol = total_vol - cabin_vol
     mf = rocket_vol * rocket_materials[material]    # Final/dry mass when rocket is empty
 
     # Calculate mass with fuel level
-    full_fuel_mass = 5 * tank_vol * fuels[fuel_type][0] # External tank attached (tank mass not factored)
-    final_fuel_mass = full_fuel_mass * fill_percentage
+    final_fuel_mass = (4 * mf) * fill_percentage    # 4 times fuel to rocketship mass is more ideal for real rockets
     m0 = mf + final_fuel_mass   # Inital mass with desired fuel added
 
     # Calculate delta_v w/ Tsiolkovsky rocket equation
