@@ -73,7 +73,7 @@ def calculate_delta_v():
     mf = rocket_vol * rocket_materials[material]    # Final/dry mass when rocket is empty
 
     # Calculate mass with fuel level
-    final_fuel_mass = (4 * mf) * fill_percentage    # 4 times fuel to rocketship mass is more ideal for real rockets
+    final_fuel_mass =  (15 * mf) * fill_percentage    # 15 times fuel to rocketship mass is more ideal for real rockets
     m0 = mf + final_fuel_mass   # Inital mass with desired fuel added
 
     # Calculate delta_v w/ Tsiolkovsky rocket equation
