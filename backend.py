@@ -68,9 +68,7 @@ def calculate_delta_v():
     
     # Calculate empty rocket mass
     total_vol = math.pi * ((diameter/2)**2) * height
-    tank_height = height * 0.85
-    tank_diameter = diameter * 0.85
-    tank_vol = math.pi * ((tank_diameter / 2)**2) * tank_height
+    tank_vol = math.pi * (((diameter * .85)/2)**2) * height
     rocket_vol = total_vol - tank_vol
     mf = rocket_vol * rocket_materials[material]    # Final/dry mass when rocket is empty
 
